@@ -62,7 +62,7 @@ stack.deleteItem([]);
 
 >3. Fill in the methods for the following Queue class so that it will work as expected.
 
-`A:
+```A:
 CLASS QUEUE
  FUNCTION enqueue(element)
  THEN push items(element)
@@ -72,4 +72,4 @@ CLASS QUEUE
 THEN shift items()
  END FUNCTION
 END CLASS
-`
+```
