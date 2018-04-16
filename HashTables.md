@@ -14,7 +14,7 @@
 
 >5. Determine whether you would use a hash table or an object to store each of the following pieces of data:
 >A list of pets and their unique names.
-`A: Object`
+`A: Hash Table`
 
 >The name, age, and the birthday of your best friend.
 `A: Object`
@@ -29,7 +29,8 @@
 `A: Hash Table`
 
 >6. Build a system that allows a sales associate to enter a customer's name, address, and phone number into the system and look up customers using their phone numbers. Store this information in a hash table.
-```var hash = (string, max) => {
+```
+var hash = (string, max) => {
   var hash = 0;
   for (var i =0; i <= string.length; i++){
     hash += string.charAt(i);
@@ -45,10 +46,10 @@ let HashTable = function() {
     console.log(storage);
   };
 
-  this.add = function(phone, customerAddress){
+  this.add = function(phone, name, customerAddress){
     var index = hash(phone, storageLimit);
     if (storage[index] === undefined) {
-      storage[index] = [ [phone, customerAddress]
+      storage[index] = [ [phone, name, customerAddress]
       ];
     } else {
       var input = false;
@@ -59,7 +60,7 @@ let HashTable = function() {
       }
     }
     if (input === false){
-      storage[index].push([phone, customerAddress]);
+      storage[index].push([phone, name, customerAddress]);
     }
   }
 };
@@ -99,7 +100,8 @@ customers.lookup("555-555-5555");
 ```
 
 >7. Build a system that allows a store owner to track their store's inventory using a hash table for storage.
-```var hash = (string, max) => {
+```
+var hash = (string, max) => {
   var hash = 0;
   for(var i =0; i < string.length; i++){
     hash += string.charCodeAt(i);
@@ -192,24 +194,28 @@ let HashTable = function(){
     }
   };
 
+
   this.lookup = function (key) {
     var index = hash(key, storageLimit);
     if (storage[index] === undefined){
       return undefined;
     } else {
-      for (var i = 0; storage[index].length; i++){
+      for (var i = 0; i < storage[index].length; i++){
         if (storage[index][i][0] === key){
           return storage[index][i][1];
         }
       }
     }
+
     };
+
+
     this.lookupDate = function(value) {
       var index = hash(value, storageLimit);
       if(storage[index] === undefined){
         return undefined;
       } else {
-        for (var i = 0; storage[index].length; i++){
+        for (var i = 0; i < storage[index].length; i++){
           if (storage[index][i][1] === value) {
             return storage[index][i][2];
           }
@@ -225,7 +231,9 @@ var digitalCopies = [{
 }];
 
 var articleTable = new HashTable();
-articleTable.add("Forbes", "2018");
-articleTable.lookup("Forbes");
+articleTable.add("Forbes-May-2018", "2018");
+articleTable.lookup("Forbes-May-2018");
 articleTable.lookupDate("2018");
+
+console.log(articleTable.lookup("Forbes-May-2018"));
 ```
