@@ -13,10 +13,10 @@
 ####Programming Questions
 
 >1. Given a string, reverse it using a stack. For example, the string "Bloc!" should be converted to "!cloB".
-`A: For this function, I would:
-1) Create an empty string.
-2) One by one push all characters of string to stack.
-3) One by one push all characters from stack and put them back to string.`
+`A: For this function, I would:`
+`1) Create an empty string.`
+`2) One by one push all characters of string to stack.`
+`3) One by one push all characters from stack and put them back to string.`
 ```
 function reverseString(string){
   var newString = [];
@@ -62,7 +62,7 @@ stack.deleteItem([]);
 
 >3. Fill in the methods for the following Queue class so that it will work as expected.
 
-`A:
+```A:
 CLASS QUEUE
  FUNCTION enqueue(element)
  THEN push items(element)
@@ -72,4 +72,4 @@ CLASS QUEUE
 THEN shift items()
  END FUNCTION
 END CLASS
-`
+```
