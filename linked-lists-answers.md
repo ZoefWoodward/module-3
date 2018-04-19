@@ -33,21 +33,40 @@ Example
 Input: a -> c -> d -> d -> a
 Output: a -> c -> d
 ```
-LinkedList.prototype.removeDuplicate = function(){
-currentNode = this.head;
-while (currentNode !== null){
-currentNode.next = currentNode;
-while (currentNode.next !== null){
-if (currentNode.value === currentNode.next.value){
-currentNode.next = currentNode.next.next;
-}else {
-currentNode = currentNode.next;
+function LinkedList() {
+  this.head = null;
 }
-}
-}
+
+LinkedList.prototype.removeDuplicates = function(){
+  if (!this.head || !this.head.next){
+    console.log('No duplicates were found. Empty or a single element Linked List.');
+    return;
+  }
+
+  var n1;
+  var n2;
+  var n3;
+  var value;
+  n2 = this.head;
+
+  while(n2) {
+    val = n2.data;
+    n1 = n2;
+    n3 = n1.next;
+
+    while(n3){
+      if (n3.data === value){
+        n1.next = n3.next;
+      } else {
+        n1 = n3;
+      }
+      n3 = n3.next;
+    }
+    n2 = n2.next;
+  }
 };
 ```
-
+>3.
 ```
 LinkedList.prototype.reverse = function(){
   currentNode = this.head;
